@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+  <div class="w-1/2 mx-auto text-red-500 text-center my-4">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 
 <div class="flex justify-between mx-40 mt-6">
   <h2 class="font-bold text-xl">予定一覧</h2>
