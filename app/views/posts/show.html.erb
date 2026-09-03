@@ -1,3 +1,9 @@
+<% if flash[:notice] %>
+  <div class="w-1/2 mx-auto text-red-500 text-center my-4">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class=" w-1/2 mx-auto my-5">
   <%= link_to "← 一覧に戻る", posts_path, class: "text-blue-500" %>
 </div>

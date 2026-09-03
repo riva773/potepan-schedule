@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   validates :title, :start_date, :end_date, presence: true
   validates :title, length: { maximum: 20 }
+  validates :memo, length: { maximum: 500 }
   validate :end_date_cannot_be_before_start_date
 
   def end_date_cannot_be_before_start_date
