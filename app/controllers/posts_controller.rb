@@ -34,6 +34,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path, status: :see_other, notice: "削除しました"
+  end
+
   def post_params
     params.require(:post).permit(:title, :start_date, :end_date, :all_day, :memo)
   end
