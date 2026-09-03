@@ -29,6 +29,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to posts_path, notice: "スケジュールを更新しました"
     else
+      flash.now[:alert] = "更新に失敗しました"
       render :edit, status: :unprocessable_entity
     end
   end

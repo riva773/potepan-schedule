@@ -1,3 +1,9 @@
+<% if flash[:alert] %>
+  <div class="text-red-500 w-1/2 my-5 mx-auto text-center">
+    <%= flash[:alert]  %>
+  </div>
+<% end %>
+
 <div class="mx-auto w-1/2">
   <h2 class="my-4 font-bold text-xl">予定を編集してください</h2>
 
