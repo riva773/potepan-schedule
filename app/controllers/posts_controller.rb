@@ -10,7 +10,14 @@ class PostsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
 
+  def new
+    @post = Post.new
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   def post_params
