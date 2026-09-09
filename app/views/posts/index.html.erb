@@ -1,0 +1,41 @@
+<% if flash[:notice] %>
+  <div class="w-1/2 mx-auto text-red-500 text-center my-4">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="flex justify-between mx-40 mt-6">
+  <h2 class="font-bold text-xl">予定一覧</h2>
+  <%= button_to "新規追加", new_post_path, method: :get, class: "bg-blue-500 hover:bg-blue-700 cursor-pointer text-white font-bold py-2 px-4 rounded" %>
+</div>
+<div class="mx-40 my-6 bg-white grid grid-cols-9 shadow-md" >
+  <table class="col-span-9">
+    <thead class="border-b-2 border-gray-200">
+      <tr>
+        <th class="px-4 py-3 text-xm">ID</th>
+        <th class="px-4 py-3 text-xm">タイトル</th>
+        <th class="px-4 py-3 text-xm">開始日</th>
+        <th class="px-4 py-3 text-xm">終了日</th>
+        <th class="px-4 py-3 text-xm">終日</th>
+        <th class="px-4 py-3 text-xm">更新日時</th>
+      </tr>
+    </thead>
+    <% @posts.each do |post| %>
+    <tr class="text-center border-b-2 border-gray-200">
+      <td class="px-4 py-3"><%= post.id %></td>
+      <td class="px-4 py-3"><%= post.title %></td>
+      <td class="px-4 py-3"><%= l(post.start_date, format: :default) %></td>
+      <td class="px-4 py-3"><%= l(post.end_date, format: :default) %></td>
+      <td class="px-4 py-3"><%= post.all_day ? '⚪︎' : '' %></td>
+      <td class="px-4 py-3"><%= l(post.updated_at, format: :default) %></td>
+      <td class="px-4 py-3 text-blue-500"><%= link_to "詳細", post %></td>
+      <td class="px-4 py-3 text-blue-500"><%= link_to "編集", edit_post_path(post) %></td>
+      <td class="px-4 py-3 text-blue-500"><%= link_to "削除", post_path(post), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<div class="mx-40 my-8 bg-white p-4 flex justify-between shadow-md">
+  <p>予定合計 <span class="font-bold text-xl pl-2"><%= Post.count%></span> 件</p>
+  <p class="text-gray-400">本日の日付 <%= l(Date.current, format: :default) %></p>
+</div>

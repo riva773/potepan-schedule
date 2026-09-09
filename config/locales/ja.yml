@@ -1,0 +1,17 @@
+ja:
+  date:
+    formats:
+      default: "%Y/%m/%d"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+  activerecord:
+    models:
+      post:
+    attributes:
+      post:
+        title: タイトル
+        start_date: 開始日
+        end_date: 終了日
+
+
